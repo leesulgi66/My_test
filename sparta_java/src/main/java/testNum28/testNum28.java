@@ -18,7 +18,5 @@ public class testNum28 {
         }else{
             System.out.println(false);
         }
-
-
     }
 }
