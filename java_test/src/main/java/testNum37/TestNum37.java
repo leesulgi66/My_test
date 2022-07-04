@@ -45,10 +45,8 @@ public class TestNum37 {
                 setnum.add(sumnum);
             }
         }
-        System.out.println(setnum);
 
         List<Integer> listnum = new ArrayList<>(setnum);            //리스트로 변경
-        System.out.println(Collections.unmodifiableList(listnum));  //리스트 확인
         Collections.sort(listnum);                                  //리스트 정렬
 
         int[] answer = new int[listnum.size()];
