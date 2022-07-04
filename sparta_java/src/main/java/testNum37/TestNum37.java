@@ -1,9 +1,6 @@
 package testNum37;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 //https://programmers.co.kr/learn/courses/30/lessons/68644
 //두 개 뽑아서 더하기
@@ -41,18 +38,19 @@ public class TestNum37 {
     public int[] solution(int[] numbers) {
         Arrays.sort(numbers); // 숫자의 정렬
         int sumnum = 0;
-        List<Integer> listnum = new ArrayList<>();
+        Set<Integer> setnum = new HashSet<>();
         for (int i = 0; i < numbers.length-1; i++) {
             for (int j = i+1; j < numbers.length; j++) {
                 sumnum = numbers[i] + numbers[j];
-                if (!listnum.contains(sumnum)) {
-                    listnum.add(sumnum);
-                }
+                setnum.add(sumnum);
             }
         }
-        Collections.sort(listnum);                         //리스트 정렬
+        System.out.println(setnum);
 
-        System.out.println(Collections.unmodifiableList(listnum));
+        List<Integer> listnum = new ArrayList<>(setnum);            //리스트로 변경
+        System.out.println(Collections.unmodifiableList(listnum));  //리스트 확인
+        Collections.sort(listnum);                                  //리스트 정렬
+
         int[] answer = new int[listnum.size()];
         for (int i = 0; i < listnum.size(); i++) {
             answer[i] = listnum.get(i);
