@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class testQuiz02 {
     public String solution(int n) {
+        //알고리즘 테스트 2번 문제!!
         //2번 문제 자연수 뒤집어 더하기!
         int numsum = 0;
         int[] numarr = new int[(int) (Math.log10(n) + 1)]; // 자연수 n 길이 만큼의 배열
@@ -17,14 +18,16 @@ public class testQuiz02 {
         }
         Arrays.toString(numarr); //숫자 배열을 문자 배열로 변환
         String answer = ""; //빈 문자 생성
+        StringBuilder stringBuilder = new StringBuilder();
 
         for (int i=0; i<numarr.length;i++){
             if(i<numarr.length-1){
-                answer += numarr[i]+"+"; //더하기 부분을 buffer 로 바꾸면 더 좋다
+                stringBuilder.append(numarr[i]+"+"); //문자열의 수정은 + 기보단 Stringbuilder를 쓰자;
             }else{
-                answer += numarr[i]+"=";
+                stringBuilder.append(numarr[i]+"=");
             }
         }
+        answer = stringBuilder.toString();
         String.valueOf(numsum); //합계도 문자열로 변경
         answer += numsum;
         return answer;
