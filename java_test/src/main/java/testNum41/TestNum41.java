@@ -12,7 +12,7 @@ import java.util.Arrays;
 //        입출력 예
 //        s	       | return
 //        "Zbcdefg"| "gfedcbZ"
-public class testNum41 {
+public class TestNum41 {
     public String solution(String s) {
 //        char[] temp = s.toCharArray();
 
@@ -39,7 +39,7 @@ public class testNum41 {
     }
 
     public static void main(String[] args) {
-        testNum41 testNum41 = new testNum41();
+        TestNum41 testNum41 = new TestNum41();
         String s = "Zbcdefg";
         System.out.println(testNum41.solution(s));
     }

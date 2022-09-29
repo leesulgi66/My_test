@@ -17,7 +17,7 @@ package testNum40;
 //
 //        12를 11로 나눈 나머지가 1이고, 11보다 작은 자연수 중에서 문제의 조건을 만족하는 수가 없으므로, 11을 return 해야 합니다.
 
-public class testNum40 {
+public class TestNum40 {
     int solution(int n) {
         int answer = 0;
         int i = 1;
@@ -32,7 +32,7 @@ public class testNum40 {
         return answer;
     }
     public static void main(String[] args) {
-        testNum40 testNum40 = new testNum40();
+        TestNum40 testNum40 = new TestNum40();
         int n = 10;
         System.out.println(testNum40.solution(n));
     }
