@@ -25,14 +25,38 @@ import java.util.Arrays;
 
 class Solution {
     public String[] solution(String[] strings, int n) {
+        System.out.println(Arrays.toString(strings));
+        System.out.println(strings[0].charAt(n));
 
-        String[] answer = {};
+        for(int i=0; i < strings.length; i++) {
+            for (int j=i+1; j < strings.length; j++) {
+                if(strings[i].charAt(n) > strings[j].charAt(n)){
+                    String [] temp = new String[strings.length];
+                    temp[i] = strings[i];
+                    strings[i] = strings[j];
+                    strings[j] = temp[i];
+                }else if (strings[i].charAt(n) == strings[j].charAt(n)){
+                    String [] temp = new String[2];
+                    temp[0] = strings[i];
+                    temp[1] = strings[j];
+                    Arrays.sort(temp);
+                    strings[i] = temp[0];
+                    strings[j] = temp[1];
+                }
+            }
+        }
+
+        System.out.println(Arrays.toString(strings));
+
+        String [] answer = {};
+        answer = strings;
+
         return answer;
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        String[] strings = {"sun", "bed", "car"};
+        String[] strings = {"abce", "abcd", "cdx", "dab"};
         int n = 1;
 
         System.out.println(Arrays.toString(solution.solution(strings, n)));
