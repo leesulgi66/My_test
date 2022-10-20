@@ -65,10 +65,11 @@ class Solution {
                         resultnum[i] = 1;
                     }
                 }else if(splitString[i].equals("0")){
-                    if(splitString[i-1].equals("1")){
+                    if (i==0) {
+                        resultnum[i] = 0;
+                    }else if(splitString[i-1].equals("1")){
                         resultnum[i] = 10;
                     }
-
                 }else {
                     resultnum[i] = number[Arrays.asList(numberString).indexOf(splitString[i])];
                 }
@@ -113,7 +114,7 @@ class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        String dartResult = "1S*2T*3S";
+        String dartResult = "0S*2T*3S";
         System.out.println(solution.solution(dartResult));
     }
 }
