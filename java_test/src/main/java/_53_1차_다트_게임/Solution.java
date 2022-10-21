@@ -52,31 +52,34 @@ class Solution {
         String[] numberString = {"0","1","2","3","4","5","6","7","8","9"};
         String[] bonus = {"S", "D", "T"};
         String[] option = {"*", "#"};
-        String[] splitString = dartResult.split("");
+        String[] splitString = dartResult.split(""); //문자열을 낯개로 쪼개기
 
-        int[] resultnum = new int[10];
+        int[] resultnum = new int[10]; //빈 배열 생성
 
+        //쪼갠 문자열 수만큼 for문
         for(int i = 0; i < splitString.length; i++) {
             if (Arrays.asList(numberString).contains(splitString[i])){
+                //숫자 1일 경우 뒤의 숫자가 0이 와서 10이 될 가능성 조건
                 if(splitString[i].equals("1")) {
                     if(splitString[i+1].equals("0")) {
                         continue;
                     }else {
                         resultnum[i] = 1;
                     }
+                //숫자 0일 경우 앞의 숫자가 1이와서 10이 될수 있는 조건
                 }else if(splitString[i].equals("0")){
                     if (i==0) {
                         resultnum[i] = 0;
                     }else if(splitString[i-1].equals("1")){
                         resultnum[i] = 10;
                     }
+                //현재 숫자의 index 위치를 빈 배열의 같은 index 위치로 옮긴다.
                 }else {
                     resultnum[i] = number[Arrays.asList(numberString).indexOf(splitString[i])];
                 }
-
-
             }
 
+            //문자 S,D,T의 경우
             if (Arrays.asList(bonus).contains(splitString[i])){
                 if (splitString[i].equals("S")){
                     resultnum[i-1] = resultnum[i-1];
@@ -87,9 +90,11 @@ class Solution {
                 }
             }
 
+            //문자 *,#의 경우
             if((Arrays.asList(option).contains(splitString[i]))){
                 if(splitString[i].equals("*")) {
                     resultnum[i-2] = resultnum[i-2] * 2;
+                    //i의 인덱스가 2이상일 때만 이 전의 수에 연산해 준다.
                     if(i > 2){
                         if(resultnum[i-4] != 0) {
                             resultnum[i-4] = resultnum[i-4] * 2;
@@ -105,7 +110,7 @@ class Solution {
                 }
             }
         }
-        //System.out.println(Arrays.toString(resultnum));
+        System.out.println(Arrays.toString(resultnum));
 
         answer  = Arrays.stream(resultnum).sum();
 
@@ -114,7 +119,7 @@ class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        String dartResult = "0S*2T*3S";
+        String dartResult = "2S*2T*3S";
         System.out.println(solution.solution(dartResult));
     }
 }
